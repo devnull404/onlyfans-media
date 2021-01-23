@@ -1,3 +1,8 @@
+let NEXT = "pswp__button--arrow--right";
+let PREV = "pswp__button--arrow--left";
+let IMG = "pswp__img";
+let IMG_CONTAINER = "b-photos__item"
+
 function nextImage() {
 	document.getElementsByClassName("pswp__button--arrow--right")[0].click();	
 }
