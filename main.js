@@ -15,7 +15,7 @@ links = []
 
 function concatenar(links) {
 	for (i = 0; i < document.getElementsByClassName("pswp__img").length; i++) {
-		if (!(links.indexOf(document.getElementsByClassName("pswp__img")[i].src) > 0)) {
+		if (!(links.indexOf(document.getElementsByClassName("pswp__img")[i].src) >= 0)) {
 			links = links.concat(document.getElementsByClassName("pswp__img")[i].src)
 		}
 	}
