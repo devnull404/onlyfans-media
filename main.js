@@ -1,22 +1,24 @@
-let NEXT = "pswp__button--arrow--right";
-let PREV = "pswp__button--arrow--left";
-let IMG = "pswp__img";
-let IMG_CONTAINER = "b-photos__item"
+const NEXT = "pswp__button--arrow--right";
+const PREV = "pswp__button--arrow--left";
+const IMG = "pswp__img";
+const IMG_CONTAINER = "b-photos__item"
+
+let links = []
 
 function nextImage() {
-	document.getElementsByClassName("pswp__button--arrow--right")[0].click();	
+	document.getElementsByClassName(NEXT)[0].click();	
 }
 
 function getImage () {
-	window.open(document.getElementsByClassName("pswp__img")[1].src, "_blank");
+	window.open(document.getElementsByClassName(IMG)[1].src, "_blank");
 }
 
-links = []
+
 
 function concatenar(links) {
-	for (i = 0; i < document.getElementsByClassName("pswp__img").length; i++) {
-		if (!(links.indexOf(document.getElementsByClassName("pswp__img")[i].src) >= 0)) {
-			links = links.concat(document.getElementsByClassName("pswp__img")[i].src)
+	for (i = 0; i < document.getElementsByClassName(IMG).length; i++) {
+		if (!(links.indexOf(document.getElementsByClassName(IMG)[i].src) >= 0)) {
+			links = links.concat(document.getElementsByClassName(IMG)[i].src)
 		}
 	}
 	return links;
@@ -29,8 +31,19 @@ function openImages(links) {
 }
 
 function globalScraper() {
-	for (i = 0; i < document.getElementsByClassName("b-photos__item").length-2; i++) {
+	for (i = 0; i < document.getElementsByClassName(IMG_CONTAINER).length-2; i++) {
 		setTimeout("links = concatenar(links)", 80*i)
 		setTimeout("nextImage()", 80*i)
+	}
+}
+
+
+function deleteSingleThumbnail(element) {
+	document.getElementsByClassName("b-photos__item__img")[element].src = ""
+}
+
+function deleteAllThumbnails() {
+	for (let i = 0; i < document.getElementsByClassName("b-photos__item").length; i++) {
+		deleteSingleThumbnail(i)
 	}
 }
